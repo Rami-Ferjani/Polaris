@@ -41,7 +41,19 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {" "}
+            <header>
+              <SignedOut>
+                <SignInButton />
+                <SignUpButton>
+                  <button className="bg-rose-500 text-white p-2 rounded">
+                    Sign up
+                  </button>
+                </SignUpButton>
+              </SignedOut>{" "}
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </header>
             {children}
           </ThemeProvider>
         </body>
