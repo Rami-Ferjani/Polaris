@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ConvexClientProvider } from "@/components/convex-client-provider";
 import {
   ClerkProvider,
   SignInButton,
@@ -42,20 +43,23 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <header>
-              <SignedOut>
-                <SignInButton />
-                <SignUpButton>
-                  <button className="bg-rose-500 text-white p-2 rounded">
-                    Sign up
-                  </button>
-                </SignUpButton>
-              </SignedOut>{" "}
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </header>
-            {children}
+            <ConvexClientProvider>
+              {" "}
+              <header>
+                <SignedOut>
+                  <SignInButton />
+                  <SignUpButton>
+                    <button className="bg-rose-500 text-white p-2 rounded">
+                      Sign up
+                    </button>
+                  </SignUpButton>
+                </SignedOut>{" "}
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </header>
+              {children}
+            </ConvexClientProvider>
           </ThemeProvider>
         </body>
       </html>
