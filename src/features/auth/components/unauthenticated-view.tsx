@@ -5,10 +5,14 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
+  ItemActions,
 } from "@/components/ui/item";
 import { components } from "./../../../../convex/_generated/api";
 
 import { Unauthenticated } from "convex/react";
+import { SignInButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export const UnauthenticatedView = () => {
   return (
@@ -24,6 +28,13 @@ export const UnauthenticatedView = () => {
               You are not authorized to access this resource.
             </ItemDescription>
           </ItemContent>
+          <ItemActions>
+            <SignInButton>
+              <Button variant="outline" size="sm">
+                Sign In
+              </Button>
+            </SignInButton>
+          </ItemActions>
         </Item>
       </div>
     </div>
