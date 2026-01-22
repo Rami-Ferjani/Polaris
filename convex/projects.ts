@@ -6,11 +6,12 @@ export const create = mutation({
     name: v.string(),
   },
   handler: async (ctx, args) => {
-    const identity = ctx.auth.getUserIdentity();
+    const identity = await ctx.auth.getUserIdentity();
+    console.log("identity is :", identity);
     if (!identity) throw new Error("Unauthorized");
     await ctx.db.insert("projects", {
       name: args.name,
-      ownerId: "123",
+      ownerId: identity.subject,
     });
   },
 });
@@ -18,10 +19,13 @@ export const create = mutation({
 export const get = query({
   args: {},
   handler: async (ctx, args) => {
-    const identity = ctx.auth.getUserIdentity();
+    const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      return {};
+      return [];
     }
-    return await ctx.db.query("projects").collect();
+    return await ctx.db
+      .query("projects")
+      .withIndex("by_owner", (q) => q.eq("ownerId", identity.subject))
+      .collect();
   },
 });

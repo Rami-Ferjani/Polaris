@@ -6,6 +6,7 @@ import {
   SignInButton,
   SignUpButton,
   useAuth,
+  UserButton,
 } from "@clerk/nextjs";
 import {
   Authenticated,
@@ -28,7 +29,10 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
           enableSystem
           disableTransitionOnChange
         >
-          <Authenticated>{children}</Authenticated>
+          <Authenticated>
+            <UserButton />
+            {children}
+          </Authenticated>
           <Unauthenticated>
             Not authentitcated
             <SignInButton />

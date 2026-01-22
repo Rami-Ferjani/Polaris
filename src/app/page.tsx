@@ -15,11 +15,11 @@ const x = () => {
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      <Button onClick={() => createProject({name:"New Project"})}></Button>
+      <Button onClick={() => createProject({ name: "New Project" })}></Button>
       {projects?.map((project) => (
         <div className="border rounded p-2 flex flex-col" key={project._id}>
           <p>{project.name}</p>
-          <p>Owner Id: {`${project.name}`}</p>
+          <p>Owner Id: {`${project.ownerId}`}</p>
         </div>
       ))}
       <Button>Click me</Button>
