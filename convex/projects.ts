@@ -7,7 +7,8 @@ export const create = mutation({
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
-    console.log("identity is :", identity);
+     const identity = await ctx.auth.getUserIdentity();
+     if (!identity) throw new Error("Unauthorized");
     if (!identity) throw new Error("Unauthorized");
     await ctx.db.insert("projects", {
       name: args.name,
