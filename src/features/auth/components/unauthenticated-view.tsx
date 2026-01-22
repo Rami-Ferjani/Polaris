@@ -11,7 +11,6 @@ import { components } from "./../../../../convex/_generated/api";
 
 import { Unauthenticated } from "convex/react";
 import { SignInButton } from "@clerk/nextjs";
-import { SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 export const UnauthenticatedView = () => {
