@@ -1,0 +1,6 @@
+review:
+  auto: true
+
+pull_request:
+  auto_generate_description: true
+  auto_generate_title: true
