@@ -2,7 +2,7 @@
 // import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-const GOOGLE_GEMINI_KEY = process.env.GOOGLE_GEMINI_KEY;
+const GOOGLE_GEMINI_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 const google = createGoogleGenerativeAI({
   apiKey: GOOGLE_GEMINI_KEY,
 });
