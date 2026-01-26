@@ -2,15 +2,21 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function DemoPage() {
-    const handleBlocking=async()=>{
-        await fetch("api/demo/blocking",{method:"POST"});
-    }
+  const [loading, setLoading] = useState(false);
+  const handleBlocking = async () => {
+    setLoading(true);
+    await fetch("api/demo/blocking", { method: "POST" });
+    setLoading(false);
+  };
 
   return (
     <div className="p-8 space-x-4">
-      <Button>Blocking</Button>
+      <Button disabled={loading} onClick={handleBlocking}>
+        {loading ? "loading..." : "Blocking"}
+      </Button>
     </div>
   );
 }
