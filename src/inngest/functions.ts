@@ -2,6 +2,9 @@ import { generateText } from "ai";
 import { inngest } from "./client";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 const GOOGLE_GEMINI_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+if (!GOOGLE_GEMINI_KEY) {
+  throw new Error("GOOGLE_GENERATIVE_AI_API_KEY environment variable is not set");
+}
 
 const google = createGoogleGenerativeAI({
   apiKey: GOOGLE_GEMINI_KEY,
